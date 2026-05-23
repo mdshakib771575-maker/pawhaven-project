@@ -7,14 +7,13 @@ import React from 'react';
 import { toast } from 'react-toastify';
 
 
-const SignUp = () => {
+const LogIn = () => {
     const onSubmit = async (e) =>{
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const user = Object.fromEntries(formData.entries());
         console.log(user);
-        const { data, error } = await authClient.signUp.email({
-        name:user.name,    
+        const { data, error } = await authClient.signIn.email({  
         email : user.email ,
         password : user.password
     })
@@ -28,17 +27,9 @@ const SignUp = () => {
     }
     return (
         <div className='max-w-7xl mx-auto mt-10'>
-            <h2 className='text-center font-bold text-2xl mb-2'>Create Account</h2>
+            <h2 className='text-center font-bold text-2xl mb-2'>LogIn</h2>
             <Card className='p-10 shadow-xl'>
-            <Form onSubmit={onSubmit} className="flex w-96 flex-col gap-4  ">
-                <TextField
-                    isRequired
-                    name="name"
-                    type="text">
-                    <Label>Name</Label>
-                    <Input placeholder="Enter Your Name" />
-                    <FieldError />
-                </TextField>
+            <Form onSubmit={onSubmit} className="flex w-96 flex-col gap-4">
 
                 <TextField
                     isRequired
@@ -48,6 +39,7 @@ const SignUp = () => {
                     <Input placeholder="john@example.com" />
                     <FieldError />
                 </TextField>
+
                 <TextField
                     isRequired
                     minLength={8}
@@ -60,7 +52,7 @@ const SignUp = () => {
                 </TextField>
                 <div className="">
                     <Button type="submit" className='w-full rounded-sm bg-[linear-gradient(90deg,#ff8a3d_0%,#ff6b00_45%,#3b82f6_100%)] text-white px-2 p-2 rounded-2xl text-sm font-semibold shadow-lg hover:scale-105 transition duration-300'>
-                        Create Account
+                        LogIn
                     </Button>
                    
                 </div>
@@ -70,4 +62,4 @@ const SignUp = () => {
     );
 };
 
-export default SignUp;
+export default LogIn;

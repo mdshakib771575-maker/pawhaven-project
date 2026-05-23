@@ -1,15 +1,25 @@
 "use client"
 import { useState } from "react";
-import {  Button } from "@heroui/react";
+import { Avatar, Button } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
+import { authClient } from "@/lib/auth-client";
 
 export function Navbar() {
+
+    const {
+        data: session,
+    } = authClient.useSession();
+    const user = session?.user;
+    console.log(user);
+    const handalLogOut = async()=>{
+       await authClient.signOut();
+    }
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const menuItem = <>
-       <li>
-        <Link href={"/"}>Home</Link>
-       </li>
+        <li>
+            <Link href={"/"}>Home</Link>
+        </li>
         <li>
             <Link href="/all-pets">All Pets</Link>
         </li>
@@ -55,21 +65,36 @@ export function Navbar() {
                         </svg>
                     </button>
                     <div className="items-center ">
-                       
+
                         <Image src={"/assects/logop.png"} alt="pawhaven" width={130} height={50} className=""></Image>
-                        </div>
+                    </div>
                 </div>
                 <ul className="hidden items-center gap-4 md:flex">
                     {menuItem}
                 </ul>
                 <div>
                     <ul className="flex items-center gap-4 md:flex">
-                        <li>
-                            <Link href="/login">LogIn</Link>
-                        </li>
-                        <li>
-                            <Link href="/signup">SignUp</Link>
-                        </li>
+                        {
+                            user ? <div className="flex  items-center gap-3">
+                                <li>
+                                    <Avatar>
+                                        <Avatar.Image alt="John Doe" src={user?.image}/>
+                                        <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
+                                    </Avatar>
+                                </li>
+                                <li>
+                                    <Button onClick={handalLogOut} className="bg-orange-500 rounded-lg">Logout</Button>
+                                </li>
+                            </div> : <>
+                                <li>
+                                    <Link href="/login">LogIn</Link>
+                                </li>
+                                <li>
+                                    <Link href="/signup">SignUp</Link>
+                                </li>
+                            </>
+                        }
+
 
                     </ul>
                 </div>

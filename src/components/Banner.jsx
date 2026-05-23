@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function Banner() {
   return (
     <section className="max-w-7xl mx-auto px-4 py-10 lg:py-20">
-      <div className="grid lg:grid-cols-2 gap-10 items-center">
+      <div className="flex flex-col-reverse lg:flex lg:flex-row gap-10 items-center">
 
         {/* Left Side */}
         <div>
