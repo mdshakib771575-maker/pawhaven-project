@@ -3,10 +3,9 @@ import TopCard from "@/components/TopCard";
 
 export default function Home() {
   return (
-    <div >
-    
-    <Banner></Banner>
-    <TopCard></TopCard>
+    <div>
+      <Banner></Banner>
+      <TopCard></TopCard>
     </div>
   );
 }

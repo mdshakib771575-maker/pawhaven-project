@@ -1,16 +1,15 @@
-"use client"
 import React from 'react';
 import { Button, Card, Description, FieldError, Form, Input, Label, Separator, TextField } from '@heroui/react';
 
-const AddPitsPage = () => {
+const UpdateModal = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const pet = Object.fromEntries(formData.entries())
-        console.log(pet)
+        // console.log(pet)
 
-        const res = await fetch('http://localhost:5000/pets', {
-            method: "POST",
+        const res = await fetch(`http://localhost:5000/pets/${_id}`, {
+            method: "PATCH",
             headers: {
                 "Content-type": "application/json"
             },
@@ -60,7 +59,7 @@ const AddPitsPage = () => {
                     </TextField>
                     <TextField
                         isRequired
-                        name="Gender"
+                        name="Gender "
                         type="text">
                         <Label>Gender </Label>
                         <Input placeholder="Enter your Gender " />
@@ -68,7 +67,7 @@ const AddPitsPage = () => {
                     </TextField>
                     <TextField
                         isRequired
-                        name="image"
+                        name="Imageurl"
                         type="url">
                         <Label>Image URL </Label>
                         <Input placeholder="Enter your Image URL " />
@@ -76,16 +75,15 @@ const AddPitsPage = () => {
                     </TextField>
                     <TextField
                         isRequired
-                        name="healthStatus"
+                        name="healthstatus"
                         type="text">
                         <Label>Health Status</Label>
-                        <Input placeholder="Enter your Health Status
- " />
+                        <Input placeholder="Enter your Health Status" />
                         <FieldError />
                     </TextField>
                     <TextField
                         isRequired
-                        name="vaccinationStatus"
+                        name="vaccinationstatus"
                         type="text">
                         <Label>Vaccination Status</Label>
                         <Input placeholder="Enter your Vaccination Status" />
@@ -102,7 +100,7 @@ const AddPitsPage = () => {
 
                     <TextField
                         isRequired
-                        name="adoptionFee"
+                        name="adoptionfee"
                         type="number">
                         <Label>Adoption Fee</Label>
                         <Input placeholder="Enter your Adoption Fee" />
@@ -120,25 +118,16 @@ const AddPitsPage = () => {
 
                     <TextField
                         isRequired
-                        name="ownerEmail"
+                        name="owneremail"
                         type="email" value='shakib75@gmail.com'>
                         <Label>Owner Email</Label>
                         <Input placeholder="Enter your Owner Email" />
                         <FieldError />
                     </TextField>
 
-                    <TextField
-                        isRequired
-                        name="status"
-                        type="text">
-                        <Label>Status</Label>
-                        <Input placeholder="Enter your status" />
-                        <FieldError />
-                    </TextField>
-
                     <div className="">
                         <Button type="submit" className='w-full rounded-sm bg-[linear-gradient(90deg,#ff8a3d_0%,#ff6b00_45%,#3b82f6_100%)] text-white px-2 p-2 rounded-2xl text-sm font-semibold shadow-lg hover:scale-105 transition duration-300'>
-                            Add Pet
+                            Update Pet
                         </Button>
                     </div>
                 </Form>
@@ -148,4 +137,4 @@ const AddPitsPage = () => {
     );
 };
 
-export default AddPitsPage;
+export default UpdateModal;

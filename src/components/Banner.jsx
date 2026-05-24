@@ -13,7 +13,7 @@ export default function Banner() {
           <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold leading-tight text-gray-900 text-center">
             A Loving Home
             <br />
-         <span>Awaits</span> <span className="text-orange-500">
+            <span>Awaits</span> <span className="text-orange-500">
               Them
             </span>
           </h1>
@@ -27,10 +27,10 @@ export default function Banner() {
           {/* Info Box */}
           <div className="flex flex-wrap gap-6 mt-8">
 
-     
+
 
             <div className="flex items-center gap-3">
-             
+
             </div>
 
           </div>

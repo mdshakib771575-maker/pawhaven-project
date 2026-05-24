@@ -7,14 +7,15 @@ import { authClient } from "@/lib/auth-client";
 import NavLink from "./NavLink";
 
 export function Navbar() {
+    const [open, setOpen] = useState(false);
 
     const {
         data: session,
     } = authClient.useSession();
     const user = session?.user;
-    console.log(user);
-    const handalLogOut = async()=>{
-       await authClient.signOut();
+    //  console.log(user)
+    const handalLogOut = async () => {
+        await authClient.signOut();
     }
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const menuItem = <>
@@ -76,17 +77,43 @@ export function Navbar() {
                 <div>
                     <ul className="flex items-center gap-4 md:flex">
                         {
-                            user ? <div className="flex  items-center gap-3">
-                                <li>
+                            user ? (
+                                <div onClick={() => setOpen(!open)} className="flex items-center gap-3 p-1 rounded-lg hover:bg-orange-500">
                                     <Avatar>
-                                        <Avatar.Image alt="John Doe" src={user?.image}/>
+                                        <Avatar.Image alt={user?.name} src={user?.image} />
                                         <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
                                     </Avatar>
-                                </li>
-                                <li>
-                                    <Button onClick={handalLogOut} className="bg-orange-500 rounded-lg">Logout</Button>
-                                </li>
-                            </div> : <>
+
+                                    {/* Dropdown */}
+                                    <div className="relative">
+                                        <button
+
+                                            className="text-gray-600 cursor-pointer"
+                                        >
+                                            {user.name.slice(0, 2)}▼
+                                        </button>
+
+                                        {open && (
+                                            <div className="absolute right-0 mt-2 w-44 bg-white rounded-xl shadow-lg border border-gray-100 z-50">
+                                                <Link
+                                                    href="/dashboard"
+                                                    onClick={() => setOpen(false)}
+                                                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-500"
+                                                >
+                                                    Dashboard
+                                                </Link>
+                                                <hr />
+                                                <button
+                                                    onClick={() => { handalLogOut(); setOpen(false); }}
+                                                    className="block w-full text-left px-4 py-2 text-sm text-red-500 hover:bg-red-50"
+                                                >
+                                                    Logout
+                                                </button>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            ) : <>
                                 <li>
                                     <Link href="/login">LogIn</Link>
                                 </li>
@@ -108,16 +135,9 @@ export function Navbar() {
                         <ul className="flex flex-col gap-2 p-4">
                             {menuItem}
                         </ul>
-
                     </div>
 
-
-
-
                 </div>
-
-
-
             )}
         </nav>
     );
