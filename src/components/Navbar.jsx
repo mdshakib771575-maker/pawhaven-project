@@ -4,6 +4,7 @@ import { Avatar, Button } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
 import { authClient } from "@/lib/auth-client";
+import NavLink from "./NavLink";
 
 export function Navbar() {
 
@@ -18,16 +19,16 @@ export function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const menuItem = <>
         <li>
-            <Link href={"/"}>Home</Link>
+            <NavLink href={"/"}>Home</NavLink>
         </li>
         <li>
-            <Link href="/all-pets">All Pets</Link>
+            <NavLink href="/all-pets">All Pets</NavLink>
         </li>
         <li>
-            <Link href="/my-request">My Request</Link>
+            <NavLink href="/my-request">My Request</NavLink>
         </li>
         <li>
-            <Link href="/add-pets">Add Pets</Link>
+            <NavLink href="/add-pets">Add Pets</NavLink>
         </li>
     </>
 
