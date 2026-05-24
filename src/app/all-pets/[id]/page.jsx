@@ -1,3 +1,4 @@
+import { DeleteModal } from '@/components/DeleteModal';
 import { Button, Card } from '@heroui/react';
 import Image from 'next/image';
 import React from 'react';
@@ -35,8 +36,12 @@ const PetDetailsPage = async ({ params }) => {
                             <span className="text-sm font-medium text-foreground font-bold text-xl">Price : Only ${adoptionFee}</span>
                             <span className="text-xs text-muted">Location : {location}</span>
 
+                        </div >
+                        <div className='flex gap-4'>
+                              <Button className="w-full sm:w-auto inline-flex items-center gap-3 bg-[linear-gradient(90deg,#ff8a3d_0%,#ff6b00_45%,#3b82f6_100%)] text-white px-8 p-2 rounded-2xl text-lg font-semibold shadow-lg hover:scale-105 transition duration-300 ">Aoopted</Button>
+                        <DeleteModal pet={pet}></DeleteModal>
                         </div>
-                        <Button className="w-full sm:w-auto inline-flex items-center gap-3 bg-[linear-gradient(90deg,#ff8a3d_0%,#ff6b00_45%,#3b82f6_100%)] text-white px-8 p-2 rounded-2xl text-lg font-semibold shadow-lg hover:scale-105 transition duration-300 ">Aoopted</Button>
+                      
                     </Card.Footer>
                 </div>
             </Card>

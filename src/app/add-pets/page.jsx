@@ -1,6 +1,7 @@
 "use client"
 import React from 'react';
 import { Button, Card, Description, FieldError, Form, Input, Label, Separator, TextField } from '@heroui/react';
+import { redirect } from 'next/navigation';
 
 const AddPitsPage = () => {
     const onSubmit = async (e) => {
@@ -17,6 +18,7 @@ const AddPitsPage = () => {
             body: JSON.stringify(pet)
         })
         const data = await res.json()
+        redirect("/all-pets")
         console.log(data)
 
     }

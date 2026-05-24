@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 
 
 export function DeleteModal({pet}) {
-    const { _id,price, imageUrl, duration, destinationName, description, departureDate, country, } = Destination;
+    const { _id, name, species, breed, age, gender, image, healthStatus, vaccinationStatus, status, ownerEmail, description, adoptionFee, location, } = pet;
     const handalDelete = async()=>{
         const res = await fetch(`http://localhost:5000/pets/${_id}`,{
             method:"DELETE",
@@ -33,7 +33,7 @@ export function DeleteModal({pet}) {
             </AlertDialog.Header>
             <AlertDialog.Body>
               <p>
-                This will permanently delete <strong>{destinationName}</strong> and all of its data. This action cannot be undone.
+                This will permanently delete <strong>{name}</strong> and all of its data. This action cannot be undone.
               </p>
             </AlertDialog.Body>
             <AlertDialog.Footer>
