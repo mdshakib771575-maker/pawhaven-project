@@ -1,4 +1,5 @@
 import { DeleteModal } from '@/components/DeleteModal';
+import { UpdateModal } from '@/components/UpdateModal';
 import { Button, Card } from '@heroui/react';
 import Image from 'next/image';
 import React from 'react';
@@ -11,7 +12,7 @@ const PetDetailsPage = async ({ params }) => {
     const { _id, name, species, breed, age, gender, image, healthStatus, vaccinationStatus, status, ownerEmail, description, adoptionFee, location, } = pet;
     return (
         <div>
-            <Card className=" border justify-center w-[70%] mx-auto">
+            <Card className=" border justify-center w-11/12 mx-auto">
                 <div className="">
                     <Image src={image} alt={name} width={400} height={200} className='h-90 w-[600px] rounded-2xl mx-auto'></Image>
                 </div>
@@ -39,7 +40,9 @@ const PetDetailsPage = async ({ params }) => {
                         </div >
                         <div className='flex gap-4'>
                               <Button className="w-full sm:w-auto inline-flex items-center gap-3 bg-[linear-gradient(90deg,#ff8a3d_0%,#ff6b00_45%,#3b82f6_100%)] text-white px-8 p-2 rounded-2xl text-lg font-semibold shadow-lg hover:scale-105 transition duration-300 ">Aoopted</Button>
+                        <UpdateModal pet={pet}></UpdateModal>
                         <DeleteModal pet={pet}></DeleteModal>
+                     
                         </div>
                       
                     </Card.Footer>

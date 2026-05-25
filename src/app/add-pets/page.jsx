@@ -8,15 +8,15 @@ const AddPitsPage = () => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const pet = Object.fromEntries(formData.entries())
-        console.log(pet)
+        // console.log(destination)
 
-        const res = await fetch('http://localhost:5000/pets', {
-            method: "POST",
-            headers: {
-                "Content-type": "application/json"
-            },
-            body: JSON.stringify(pet)
-        })
+           const res = await fetch(`http://localhost:5000/pets/${_id}`,{
+                method:"PATCH",
+                headers:{
+                    "Content-type":"application/json"
+                },
+                body:JSON.stringify(pet)
+            })
         const data = await res.json()
         redirect("/all-pets")
         console.log(data)
@@ -30,7 +30,7 @@ const AddPitsPage = () => {
                         isRequired
                         name="name"
                         type="text">
-                        <Label>Pet    Name</Label>
+                        <Label>Pet Name</Label>
                         <Input placeholder="Enter Your Name" />
                         <FieldError />
                     </TextField>
