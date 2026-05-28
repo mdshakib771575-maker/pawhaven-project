@@ -11,7 +11,7 @@ const TopCard = async () => {
 
     return (
         <>
-            <h2 className='text-center font-bold text-2xl'>Top Features</h2>
+            <h2 className='text-center font-bold text-2xl mt-5'>Top Features</h2>
             <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-8 w-11/12 mx-auto'>
                 {TopPets.map(pet => <Card key={pet._id} className=" border justify-center mt-5 hover:scale-105 transition duration-800">
                     <div className="">
