@@ -1,3 +1,4 @@
+import AdopRequestModal from '@/components/AdopRequestModal';
 import { DeleteModal } from '@/components/DeleteModal';
 import { UpdateModal } from '@/components/UpdateModal';
 import { Button, Card } from '@heroui/react';
@@ -39,12 +40,12 @@ const PetDetailsPage = async ({ params }) => {
 
                         </div >
                         <div className='flex gap-4'>
-                              <Button className="w-full sm:w-auto inline-flex items-center gap-3 bg-[linear-gradient(90deg,#ff8a3d_0%,#ff6b00_45%,#3b82f6_100%)] text-white px-8 p-2 rounded-2xl text-lg font-semibold shadow-lg hover:scale-105 transition duration-300 ">Aoopted</Button>
-                        <UpdateModal pet={pet}></UpdateModal>
-                        <DeleteModal pet={pet}></DeleteModal>
-                     
+                            <AdopRequestModal pet={pet}></AdopRequestModal>
+                            <UpdateModal pet={pet}></UpdateModal>
+                            <DeleteModal pet={pet}></DeleteModal>
+
                         </div>
-                      
+
                     </Card.Footer>
                 </div>
             </Card>

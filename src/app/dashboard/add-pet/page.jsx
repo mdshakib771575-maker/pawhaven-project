@@ -4,7 +4,7 @@ import { Button, Card, Description, FieldError, Form, Input, Label, Separator, T
 import { useRouter } from 'next/navigation';
 
 
-const AddPitsPage = () => {
+const AddPitPage = () => {
      const router = useRouter(); 
       const onSubmit = async (e) => {
         e.preventDefault();
@@ -21,12 +21,13 @@ const AddPitsPage = () => {
 
         const data = await res.json();
         console.log(data);
-        router.push("/all-pets");
+        router.push("/my-listings");
     }
 
     return (
         <div className='my-4'>
             <Card className='p-10  w-120 mx-auto shadow'>
+            <h1 className='text-center text-2xl font-bold text-orange-500'> Add<span className='text-blue-500'>Pet</span></h1>  
                 <Form onSubmit={(onSubmit)} className="flex w-96 flex-col gap-4  ">
                     <TextField
                         isRequired
@@ -153,4 +154,4 @@ const AddPitsPage = () => {
     );
 };
 
-export default AddPitsPage;
+export default AddPitPage;

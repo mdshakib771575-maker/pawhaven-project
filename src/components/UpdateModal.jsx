@@ -57,7 +57,7 @@ export function UpdateModal({pet}) {
                                         <TextField
                                          defaultValue={species}
                                             isRequired
-                                            name="species "
+                                            name="species"
                                             type="text">
                                             <Label>Species </Label>
                                             <Input placeholder="Enter your Species " />
@@ -67,7 +67,7 @@ export function UpdateModal({pet}) {
                                         <TextField
                                         defaultValue={breed}
                                             isRequired
-                                            name="breed "
+                                            name="breed"
                                             type="text">
                                             <Label>Breed </Label>
                                             <Input placeholder="Enter your Breed " />
@@ -76,7 +76,7 @@ export function UpdateModal({pet}) {
                                         <TextField
                                          defaultValue={age}
                                             isRequired
-                                            name="age "
+                                            name="age"
                                             type="text">
                                             <Label>Age </Label>
                                             <Input placeholder="Enter your Age " />
@@ -106,8 +106,7 @@ export function UpdateModal({pet}) {
                                             name="healthStatus"
                                             type="text">
                                             <Label>Health Status</Label>
-                                            <Input placeholder="Enter your Health Status
-               " />
+                                            <Input placeholder="Enter your Health Status"/>
                                             <FieldError />
                                         </TextField>
                                         <TextField
