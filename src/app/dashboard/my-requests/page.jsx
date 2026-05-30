@@ -14,9 +14,15 @@ const user = session?.user;
     console.log(adoptions);
     return (
         <div className='space-y-6'>
-            {
-              adoptions.map(adop => <RequestCard key={adop._id} adop={adop}></RequestCard>)
-            }
+              {adoptions.length === 0 ? (
+                 <p className="text-center text-gray-500  py-10 text-2xl">
+                   No data available
+                 </p>
+               ) : (
+                 adoptions.map(adop => (
+                   <RequestCard key={adop._id} adop={adop} />
+                 ))
+               )}
         </div>
     );
 };

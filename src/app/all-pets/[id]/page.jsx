@@ -1,14 +1,25 @@
 import AdopRequestModal from '@/components/AdopRequestModal';
 import { DeleteModal } from '@/components/DeleteModal';
 import { UpdateModal } from '@/components/UpdateModal';
+import { auth } from '@/lib/auth';
 import { Button, Card } from '@heroui/react';
+import { headers } from 'next/headers';
 import Image from 'next/image';
 import React from 'react';
 
 const PetDetailsPage = async ({ params }) => {
     const { id } = await params;
-    console.log(id)
-    const res = await fetch(`http://localhost:5000/pets/${id}`);
+    // token 
+    const {token} = await auth.api.getToken({
+      headers: await headers()
+    })
+    console.log(token)
+
+    // console.log(id)
+    const res = await fetch(`http://localhost:5000/pets/${id}`,{
+        headers:{
+          authorization:`Bearer ${token}`
+    }});
     const pet = await res.json()
     const { _id, name, species, breed, age, gender, image, healthStatus, vaccinationStatus, status, ownerEmail, description, adoptionFee, location, } = pet;
     return (

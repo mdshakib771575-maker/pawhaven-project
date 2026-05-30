@@ -2,6 +2,7 @@
 import React from 'react';
 import { Button, Card, Description, FieldError, Form, Input, Label, Separator, TextField } from '@heroui/react';
 import { useRouter } from 'next/navigation';
+import { authClient } from '@/lib/auth-client';
 
 
 const AddPitsPage = () => {
@@ -10,11 +11,14 @@ const AddPitsPage = () => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const pet = Object.fromEntries(formData.entries());
+           const {data:tokenData} = await authClient.token()  
+         console.log(tokenData); 
 
         const res = await fetch(`http://localhost:5000/pets`, {
             method: "POST",
             headers: {
-                "Content-type": "application/json"
+                "Content-type": "application/json",
+                   authorization:`Bearer ${tokenData?.token}`
             },
             body: JSON.stringify(pet)
         });
@@ -27,6 +31,7 @@ const AddPitsPage = () => {
     return (
         <div className='my-4'>
             <Card className='p-10  w-120 mx-auto shadow'>
+                <h1 className='text-2xl font-bold text-center'><span className='text-orange-500'>Add</span><span className='text-blue-500'>Pets</span></h1>
                 <Form onSubmit={(onSubmit)} className="flex w-96 flex-col gap-4  ">
                     <TextField
                         isRequired

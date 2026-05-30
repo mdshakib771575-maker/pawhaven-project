@@ -1,23 +1,30 @@
 "use client";
 
+
+import { authClient } from "@/lib/auth-client";
 import {AlertDialog, Button} from "@heroui/react";
 import { redirect } from "next/navigation";
 
-
-
-
-export function DeleteModal({pet}) {
+export  function DeleteModal({pet}) {
     const { _id, name, species, breed, age, gender, image, healthStatus, vaccinationStatus, status, ownerEmail, description, adoptionFee, location, } = pet;
+
     const handalDelete = async()=>{
+         const {data:tokenData} = await authClient.token()  
+               console.log(tokenData)
+
+          
+
         const res = await fetch(`http://localhost:5000/pets/${_id}`,{
             method:"DELETE",
          headers:{
-            "content-type":"application/json"
+            "content-type":"application/json",
+            authorization:`Bearer ${tokenData?.token}`
+          
          }
         })
       const data = await res.json();
        redirect("/all-pets")
-      console.log(data)
+
     }
 
   return (

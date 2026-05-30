@@ -12,11 +12,21 @@ export function UpdateModal({pet}) {
         const formData = new FormData(e.currentTarget);
         const pet = Object.fromEntries(formData.entries())
         // console.log(destination)
+        
+    app.post('/pets',verifyToken, async (req, res) => {
+      const petData = req.body;
+      console.log(petData)
+    
+      const result = await pawhavenCullaction.insertOne(petData);
+      res.json(result)
+    });
+
 
         const res = await fetch(`http://localhost:5000/pets/${_id}`, {
             method: "PATCH",
             headers: {
-                "Content-type": "application/json"
+                "Content-type": "application/json",
+                   authorization:`Bearer ${tokenData?.token}`
             },
             body: JSON.stringify(pet)
         })

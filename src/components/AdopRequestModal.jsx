@@ -32,11 +32,14 @@ const AdopRequestModal = ({pet}) => {
             depertureDate : new Date(departureDate)
  
         }
-        console.log(AdoptionRequestData)
+        // console.log(AdoptionRequestData)
+         const {data:tokenData} = await authClient.token()  
+         console.log(tokenData)  
          const res = await fetch('http://localhost:5000/adoptions',{
             method:"POST",
             headers:{
-                "Content-type":"application/json"
+                "Content-type":"application/json",
+                authorization:`Bearer ${tokenData?.token}`
             },
             body:JSON.stringify(AdoptionRequestData)
         })
