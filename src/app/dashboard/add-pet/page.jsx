@@ -11,7 +11,8 @@ const AddPitPage = () => {
         const formData = new FormData(e.currentTarget);
         const pet = Object.fromEntries(formData.entries());
 
-        const res = await fetch(`http://localhost:5000/pets`, {
+        const res = await fetch(`${process.env.
+NEXT_PUBLIC_SERVER_URL}/pets`, {
             method: "POST",
             headers: {
                 "Content-type": "application/json"

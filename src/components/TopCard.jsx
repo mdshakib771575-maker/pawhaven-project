@@ -5,7 +5,8 @@ import { Button, Card } from '@heroui/react';
 import Image from 'next/image';
 
 const TopCard = async () => {
-    const res = await fetch("http://localhost:5000/pets");
+    const res = await fetch(`${process.env.
+NEXT_PUBLIC_SERVER_URL}/pets`);
     const Pets = await res.json();
     const TopPets = Pets.slice(0, 6)
 

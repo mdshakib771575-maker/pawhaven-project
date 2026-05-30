@@ -9,7 +9,8 @@ const MyRequestPage =async() => {
 })
 const user = session?.user;
 // console.log(user)
-    const res = await fetch(`http://localhost:5000/adoptions/${user?.id}`);
+    const res = await fetch(`${process.env.
+NEXT_PUBLIC_SERVER_URL}/adoptions/${user?.id}`);
     const adoptions = await res.json();
     console.log(adoptions);
     return (

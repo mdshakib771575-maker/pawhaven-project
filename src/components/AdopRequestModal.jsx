@@ -35,7 +35,7 @@ const AdopRequestModal = ({pet}) => {
         // console.log(AdoptionRequestData)
          const {data:tokenData} = await authClient.token()  
          console.log(tokenData)  
-         const res = await fetch('http://localhost:5000/adoptions',{
+         const res = await fetch(`/adoptions${process.env.NEXT_PUBLIC_SERVER_URL}`,{
             method:"POST",
             headers:{
                 "Content-type":"application/json",
