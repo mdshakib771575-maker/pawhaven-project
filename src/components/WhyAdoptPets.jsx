@@ -36,7 +36,7 @@ const WhyAdoptPets = () => {
   ];
 
   return (
-    <section className="py-24 bg-[#0B1120] text-white mt-5">
+    <section className="py-15 rounded-2xl bg-amber-50 text-white mt-5 w-11/12 mx-auto">
       <div className="max-w-7xl mx-auto px-4">
 
         {/* heading */}
@@ -46,7 +46,7 @@ const WhyAdoptPets = () => {
           </p>
 
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Adopt with <span className="text-orange-500">Confidence</span>
+            <span className="text-black">Adopt with</span> <span className="text-orange-500">Confidence</span>
           </h2>
 
           <p className="text-gray-400 max-w-2xl mx-auto">
@@ -56,7 +56,7 @@ const WhyAdoptPets = () => {
         </div>
 
         {/* cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 p-5">
           {cards.map((card) => (
             <div
               key={card.id}

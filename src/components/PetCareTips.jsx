@@ -31,7 +31,7 @@ const PetCareTips = () => {
   ];
 
   return (
-    <section className="py-20 bg-base-100">
+    <section className="py-20 bg-base-100 w-11/12 mx-auto">
       <div className="max-w-7xl mx-auto px-4">
 
         <div className="text-center mb-12">

@@ -32,17 +32,17 @@ const SuccessStories = () => {
   ];
 
   return (
-    <section className="py-24 bg-[#0B1120] text-white mt-10 ">
+    <section className=" rounded-2xl font  text-white w-11/12 mx-auto p-10  ">
       <div className="max-w-7xl mx-auto px-4">
 
         {/* heading */}
         <div className="text-center mb-14">
-          <p className="text-orange-500 font-semibold uppercase tracking-widest mb-2">
+          <p className="text-orange-500 font-bold text-2xl uppercase tracking-widest mb-2">
             Success Stories
           </p>
 
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Happy Pets, Happy Families
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-black">
+            Happy Pets,<span className="text-orange-500">Happy Families</span> 
           </h2>
 
           <p className="text-gray-400 max-w-2xl mx-auto">
